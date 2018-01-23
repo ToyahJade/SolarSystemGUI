@@ -1,0 +1,192 @@
+import sys
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
+from scipy.constants import au
+import solarSystem
+
+class earthLike(QWidget):
+	def __init__(self, parent=None):
+		super(earthLike,self).__init__(parent)
+		self.resize(500,500)
+		layout = QVBoxLayout()
+
+		lblSunMass = QLabel()
+		lblSunMass.setText("Mass of the sun")
+		layout.addWidget(lblSunMass)
+		self.sunmass = QSlider(Qt.Horizontal)
+		self.sunmass.setMinimum(100000)
+		self.sunmass.setMaximum(500000)
+		self.sunmass.setTickInterval(1)
+		self.sunmass.setSliderPosition(198892)
+		layout.addWidget(self.sunmass)
+
+		#Mercury
+		lblMercMass = QLabel()
+		lblMercMass.setText("Mass of Mercury")
+		layout.addWidget(lblMercMass)
+		self.mercmass = QSlider(Qt.Horizontal)
+		self.mercmass.setMinimum(10)
+		self.mercmass.setMaximum(50)
+		self.mercmass.setTickInterval(0.0001)
+		self.mercmass.setSliderPosition(33)
+		layout.addWidget(self.mercmass)
+
+		lblMercPos = QLabel()
+		lblMercPos.setText("Distance between Murcury and the sun")
+		layout.addWidget(lblMercPos)
+		self.mercpos = QSlider(Qt.Horizontal)
+		self.mercpos.setMinimum(100)
+		self.mercpos.setMaximum(500)
+		self.mercpos.setTickInterval(1)
+		self.mercpos.setSliderPosition(386)
+		layout.addWidget(self.mercpos)
+		
+		lblMercVel = QLabel()
+		lblMercVel.setText("Initial velocity of Mercury")
+		layout.addWidget(lblMercVel)
+		self.mercvel = QSlider(Qt.Horizontal)
+		self.mercvel.setMinimum(300)
+		self.mercvel.setMaximum(600)
+		self.mercvel.setTickInterval(1)
+		self.mercvel.setSliderPosition(474)
+		layout.addWidget(self.mercvel)
+
+		#Venus
+		lblVenMass = QLabel()
+		lblVenMass.setText("Mass of Venus")
+		layout.addWidget(lblVenMass)
+		self.venmass = QSlider(Qt.Horizontal)
+		self.venmass.setMinimum(20000)
+		self.venmass.setMaximum(60000)
+		self.venmass.setTickInterval(1)
+		self.venmass.setSliderPosition(48685)
+		layout.addWidget(self.venmass)
+
+		lblVenPos = QLabel()
+		lblVenPos.setText("Distance between Venus and the sun")
+		layout.addWidget(lblVenPos)
+		self.venpos = QSlider(Qt.Horizontal)
+		self.venpos.setMinimum(500)
+		self.venpos.setMaximum(1000)
+		self.venpos.setTickInterval(1)
+		self.venpos.setSliderPosition(723)
+		layout.addWidget(self.venpos)
+		
+		lblVenVel = QLabel()
+		lblVenVel.setText("Initial velocity of Venus")
+		layout.addWidget(lblVenVel)
+		self.venvel = QSlider(Qt.Horizontal)
+		self.venvel.setMinimum(2000)
+		self.venvel.setMaximum(5000)
+		self.venvel.setTickInterval(1)
+		self.venvel.setSliderPosition(3502)
+		layout.addWidget(self.venvel)
+
+		#Earth
+		lblEarthMass = QLabel()
+		lblEarthMass.setText("Mass of Earth")
+		layout.addWidget(lblEarthMass)
+		self.earthmass = QSlider(Qt.Horizontal)
+		self.earthmass.setMinimum(40000)
+		self.earthmass.setMaximum(80000)
+		self.earthmass.setTickInterval(1)
+		self.earthmass.setSliderPosition(59742)
+		layout.addWidget(self.earthmass)
+
+		lblEarthPos = QLabel()
+		lblEarthPos.setText("Distance between Earth and the sun")
+		layout.addWidget(lblEarthPos)
+		self.earthpos = QSlider(Qt.Horizontal)
+		self.earthpos.setMinimum(750)
+		self.earthpos.setMaximum(1250)
+		self.earthpos.setTickInterval(1)
+		self.earthpos.setSliderPosition(1000)
+		layout.addWidget(self.earthpos)
+		
+		lblEarthVel = QLabel()
+		lblEarthVel.setText("Initial velocity of Earth")
+		layout.addWidget(lblEarthVel)
+		self.earthvel = QSlider(Qt.Horizontal)
+		self.earthvel.setMinimum(10000)
+		self.earthvel.setMaximum(50000)
+		self.earthvel.setTickInterval(1)
+		self.earthvel.setSliderPosition(29783)
+		layout.addWidget(self.earthvel)
+
+		#Mars
+		lblMarsMass = QLabel()
+		lblMarsMass.setText("Mass of Mars")
+		layout.addWidget(lblMarsMass)
+		self.marsmass = QSlider(Qt.Horizontal)
+		self.marsmass.setMinimum(400)
+		self.marsmass.setMaximum(800)
+		self.marsmass.setTickInterval(1)
+		self.marsmass.setSliderPosition(639)
+		layout.addWidget(self.marsmass)
+
+		lblMarsPos = QLabel()
+		lblMarsPos.setText("Distance between Mars and the sun")
+		layout.addWidget(lblMarsPos)
+		self.marspos = QSlider(Qt.Horizontal)
+		self.marspos.setMinimum(1250)
+		self.marspos.setMaximum(1750)
+		self.marspos.setTickInterval(1)
+		self.marspos.setSliderPosition(1524)
+		layout.addWidget(self.marspos)
+		
+		lblMarsVel = QLabel()
+		lblMarsVel.setText("Initial velocity of Mars")
+		layout.addWidget(lblMarsVel)
+		self.marsvel = QSlider(Qt.Horizontal)
+		self.marsvel.setMinimum(100)
+		self.marsvel.setMaximum(500)
+		self.marsvel.setTickInterval(1)
+		self.marsvel.setSliderPosition(241)
+		layout.addWidget(self.marsvel)
+
+		self.plot = QPushButton("Plot",self)
+		self.plot.move(10,10)
+		self.plot.resize(self.plot.sizeHint())
+		self.plot.setToolTip("Temp desc")
+		self.plot.clicked.connect(self.Plot)
+		layout.addWidget(self.plot)
+
+		
+		self.exit = QPushButton("Exit",self)
+		self.exit.move(10,10)
+		s
+
+		self.setLayout(layout)
+
+	def Plot(self):
+		solarSystem.main(self.sunmass.value()*10**25,
+			self.mercmass.value()*10**22,
+			self.mercpos.value()*au/1000.0,
+			self.mercvel.value()*100,
+			self.venmass.value()*10**20,
+			self.venpos.value()*au/1000.0,
+			self.venvel.value()*10,
+			self.earthmass.value()*10**20,
+			self.earthpos.value()*au/1000.0,
+			self.earthvel.value(),
+			self.marsmass.value()*10**21,
+			self.marspos.value()*au/1000.0,
+			self.marsvel.value()*100)
+
+"""class MyWindowClass(QtGui.QWidget):
+	def __init__(self, parent=None):
+		super(MyWindowClass,self).__init__(parent)
+		self.resize(500,500)
+		self.tempBtn = QtGui.QPushButton("Temp name",self)
+		self.tempBtn.move(10,10)
+		self.tempBtn.resize(self.tempBtn.sizeHint())
+		self.tempBtn.setToolTip("Temp desc")
+		self.tempBtn.clicked.connect(self.func)
+	
+	def func(self):
+		solarSystem.main()"""
+
+app = QApplication(sys.argv)
+myWindow = earthLike(None)
+myWindow.show()
+app.exec_()
